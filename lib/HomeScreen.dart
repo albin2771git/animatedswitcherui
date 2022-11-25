@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:animatedswitcherui/SignUpScreen.dart';
 import 'package:animatedswitcherui/loginScreen.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 120),
+                    padding:
+                        const EdgeInsets.only(bottom: 120, left: 30, right: 30),
                     child: Row(
                       children: [
                         SizedBox(
@@ -75,10 +78,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blueAccent,
+                                backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20))),
-                            child: Text("Login"),
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             onPressed: (() {
                               setState(() {
                                 formvisible = true;
@@ -93,10 +101,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blueAccent,
+                                backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20))),
-                            child: Text("Sign Up"),
+                            child: Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             onPressed: (() {
                               setState(() {
                                 formvisible = true;
@@ -171,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     });
                                   },
                                   child: Text(
-                                    "Login",
+                                    "Sign Up",
                                     style: TextStyle(
                                         color: formindex == 2
                                             ? Colors.green
@@ -195,9 +208,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           Container(
                             child: AnimatedSwitcher(
                               duration: Duration(milliseconds: 300),
-                              child: formindex == 1
-                                  ? LoginScreen()
-                                  : SignUpScreen(),
+                              child: Column(
+                                children: [
+                                  formindex == 1
+                                      ? LoginScreen()
+                                      : SignUpScreen(),
+                                ],
+                              ),
                             ),
                           ),
                         ],
